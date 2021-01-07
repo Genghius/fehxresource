@@ -1,0 +1,9 @@
+if [ -f "$1" ]; then
+	image=$1
+else
+	image=$(grep -Po "(?<=')/.*(?=')" ~/.fehbg)
+fi
+colors=$(convert "$image" -colors 16 -define histogram:unique-colors=true -format "%c" histogram:info:- | grep -Pho "#(.){6}")
+printf "*.foreground:\t#cdcdcd\n*.background:\t#1c1c1c\n*.cursorColor:\t#c7ddc7\n" > ~/.Xresources
+printf " ""$colors" | awk '{print "*.color" NR-1 ":\t" $1}' >> ~/.Xresources
+xrdb ~/.Xresources

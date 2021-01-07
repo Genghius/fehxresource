@@ -1,0 +1,11 @@
+fehxresource
+
+________________________________________________________________________________
+
+Generate .Xresources file based off the current wallpaper (the ~/.fehbg file needs to have been generated). Can also just generate the file when given any image as an argument.
+
+needs imagemagick.
+
+can be installed by moving file to ~/.local/bin
+
+  cp fehxresource ~/.local/bin
