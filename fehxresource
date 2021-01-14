@@ -1,3 +1,4 @@
+#!/bin/sh
 [ "$1" ] && image=$1 || image=$(grep -o "/[^']*" ~/.fehbg | sed -e '$!d')
 colors=$(convert "$image" -colors 16 -define histogram:unique-colors=true -format "%c" histogram:info:- | grep -o "#......")
 printf "*.foreground:\t#cdcdcd\n*.background:\t#1c1c1c\n*.cursorColor:\t#c7ddc7\n" > ~/.Xresources
